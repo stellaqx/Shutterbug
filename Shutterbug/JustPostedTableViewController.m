@@ -43,6 +43,11 @@
 
 #pragma mark - Navigation
 
+-(void)prepareImageViewController:(ImageViewController *)imageVC photo:(NSDictionary *)photo {
+    imageVC.imageURL = [FlickrFetcher URLforPhoto:photo format:FlickrPhotoFormatLarge];
+    imageVC.title = [photo valueForKey:FLICKR_PHOTO_TITLE];
+}
+
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // get the index path of the sender
@@ -50,8 +55,7 @@
     if ([segue.identifier isEqualToString:@"displayPhoto"] && [segue.destinationViewController isKindOfClass:[ImageViewController class]]) {
         ImageViewController *imageVC = (ImageViewController *)segue.destinationViewController;
         NSDictionary *photo = self.photos[indexPath.row];
-        imageVC.imageURL = [FlickrFetcher URLforPhoto:photo format:FlickrPhotoFormatLarge];
-        imageVC.title = [photo valueForKey:FLICKR_PHOTO_TITLE];
+        [self prepareImageViewController:imageVC photo:photo];
     }
 }
 
