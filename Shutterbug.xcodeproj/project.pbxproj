@@ -18,6 +18,7 @@
 		97884C592451684D009FB29C /* JustPostedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97884C582451684D009FB29C /* JustPostedTableViewController.m */; };
 		97884C5E245168E0009FB29C /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 97884C5D245168E0009FB29C /* FlickrFetcher.m */; };
 		97884C8924537BBF009FB29C /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97884C8824537BBF009FB29C /* ImageViewController.m */; };
+		97884CC224539829009FB29C /* MySplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97884CC124539829009FB29C /* MySplitViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,8 @@
 		97884C5D245168E0009FB29C /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
 		97884C8724537BBF009FB29C /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		97884C8824537BBF009FB29C /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		97884CC024539829009FB29C /* MySplitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MySplitViewController.h; sourceTree = "<group>"; };
+		97884CC124539829009FB29C /* MySplitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySplitViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				97884C8824537BBF009FB29C /* ImageViewController.m */,
 				97884C54245167B1009FB29C /* FlickerPhotosTableViewController.h */,
 				97884C55245167B1009FB29C /* FlickerPhotosTableViewController.m */,
+				97884CC024539829009FB29C /* MySplitViewController.h */,
+				97884CC124539829009FB29C /* MySplitViewController.m */,
 				97884C572451684D009FB29C /* JustPostedTableViewController.h */,
 				97884C582451684D009FB29C /* JustPostedTableViewController.m */,
 				97884C5A245168E0009FB29C /* Flickr Fetcher */,
@@ -176,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97884CC224539829009FB29C /* MySplitViewController.m in Sources */,
 				97884C592451684D009FB29C /* JustPostedTableViewController.m in Sources */,
 				97884C56245167B1009FB29C /* FlickerPhotosTableViewController.m in Sources */,
 				97884C8924537BBF009FB29C /* ImageViewController.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "FlickerPhotosTableViewController.h"
 #import "FlickrFetcher.h"
+#import "ImageViewController.h"
 
 @interface FlickerPhotosTableViewController ()
 
@@ -26,7 +27,20 @@
     [self.tableView reloadData];
 }
 
+// MARK: - SplitView
+- (BOOL)isInSplitView {
+    id detail = self.splitViewController.viewControllers[1]; // if we are not in a split view, we are nil
+    return detail == nil ? NO : YES;
+}
+
 // MARK: - UITableViewDataSource
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    id detail = self.splitViewController.viewControllers[1]; // if we are not in a split view, we are nil
+    if ([detail isKindOfClass:[ImageViewController class]]) {
+        [self prepareImageViewController:detail photo:self.photos[indexPath.row]];
+    }
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -47,15 +61,28 @@
     return cell;
 }
 
-/*
 #pragma mark - Navigation
+
+-(void)prepareImageViewController:(ImageViewController *)imageVC photo:(NSDictionary *)photo {
+    imageVC.imageURL = [FlickrFetcher URLforPhoto:photo format:FlickrPhotoFormatLarge];
+    imageVC.title = [photo valueForKey:FLICKR_PHOTO_TITLE];
+}
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([self isInSplitView]) {
+        return;
+    }
+    // get the index path of the sender
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    if ([segue.identifier isEqualToString:@"displayPhoto"] && [segue.destinationViewController isKindOfClass:[ImageViewController class]]) {
+        ImageViewController *imageVC = (ImageViewController *)segue.destinationViewController;
+        NSDictionary *photo = self.photos[indexPath.row];
+        [self prepareImageViewController:imageVC photo:photo];
+    }
 }
 
+/*
 - (void)encodeWithCoder:(nonnull NSCoder *)coder;
 
 - (void)traitCollectionDidChange:(nullable UITraitCollection *)previousTraitCollection;
